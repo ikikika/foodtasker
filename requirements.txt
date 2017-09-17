@@ -2,3 +2,4 @@ Django==1.10
 gunicorn==19.6.0
 olefile==0.44
 Pillow==4.2.1
+whitenoise-3.2.1
