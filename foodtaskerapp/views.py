@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
+from foodtaskerapp.forms import UserForm, RestaurantForm
 # Create your views here.
 
 def home(request):
@@ -11,4 +11,6 @@ def restaurant_home(request):
     return render(request, 'restaurant/home.html', {})
 
 def restaurant_sign_up(request):
+    user_form = UserFOrm()
+    restaurant_form = RestaurantForm()
     return render(request, 'restaurant/sign_up.html', {})
