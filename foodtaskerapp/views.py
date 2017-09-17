@@ -25,7 +25,7 @@ def restaurant_sign_up(request):
         #check if data is valid
         if user_form.is_valid() and restaurant_form.is_valid():
             #create a new user object (restaurant owner)
-            new_user = User.object.create_user(**user_form.cleaned_data)
+            new_user = User.objects.create_user(**user_form.cleaned_data)
             #create a new restaurant object. commit false means create in memeory first
             new_restaurant = restaurant_form.save(commit=False)
             #assign user (restaurant owner) to restaurant
@@ -35,7 +35,7 @@ def restaurant_sign_up(request):
 
             login(request, authenticate(
                 username = user_form.cleaned_data["username"],
-                password = user_form.clenaed_data["password"]
+                password = user_form.cleaned_data["password"]
             ))
             #go back to restaurant home page
             return redirect(restaurant_home)

@@ -15,7 +15,7 @@
 </head>
 <body>
   <h1>Restaurant sign up</h1>
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ user_form }}
     {{ restaurant_form }}
