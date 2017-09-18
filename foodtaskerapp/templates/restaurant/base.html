@@ -5,7 +5,15 @@ Restaurant
 {% endblock %}
 
 {% block sidebar %}
-Restaurant, Hi {{ request.user }}
+
+<div class="text-center">
+  <img src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}" alt="" class="img-circle" style="width:70px;height:70px;">
+  <br/><br/>
+  <h4>Hi, {{ request.user.get_full_name }}</h4>
+  <h5>{{ request.user.restaurant.name }}</h5>
+
+</div>
+
 <hr/>
 <a href="{% url 'restaurant-account' %}">Account</a>
 -
