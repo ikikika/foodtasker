@@ -45,3 +45,59 @@ body{
 .sidebar > div:first-child > h5{
   color: #b6b4c1;
 }
+
+/* sidebar -- list*/
+.sidebar .list-group{
+  padding:0;
+  background-color: #3f3f63;
+  text-align:center;
+}
+
+.sidebar .list-group > span{
+  color: #b6b4c1;
+  display:block;
+  margin-top: 20px;
+  padding:20px 0px;
+  font-size:16px;
+  font-weight:300;
+}
+
+.sidebar .list-group .list-group-item,
+.sidebar .list-group .list-group-item:focus{
+  background-color: #3f3f63;
+  color: #b6b4c1;
+  border:0;
+  
+}
+
+
+.sidebar .list-group .list-group-item.active,
+.sidebar .list-group .list-group-item:hover{
+  background-color: #383957;
+  color: #e0deeb;
+}
+
+.sidebar .list-group .list-group-item:first-child{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.sidebar .list-group .list-group-item .badge,
+.sidebar .list-group .list-group-item:hover .badge{
+  background-color: #ee5462;
+  color:#e0deeb;
+}
+
+/* sidebar -- logout */
+.sidebar > div:last-child{
+  padding:30px;
+}
+
+.sidebar > div:last-child .btn{
+  width:100px;
+}
+
+/* content */
+.content{
+  padding: 0px 40px;
+}
