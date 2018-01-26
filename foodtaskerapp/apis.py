@@ -95,9 +95,37 @@ def restaurant_order_notification(request, last_request_time):
 #driver
 
 def driver_get_ready_orders(request):
-    return JsonResponse({})
+    orders = OrderSerializer(
+        Order.objects.filter(status = Order.READY, driver = None).order_by("-id"),
+        many = True
+    ).data
+    return JsonResponse({"orders": orders})
 
+@csrf_exempt
+#post param: access_token, order_id
 def driver_pick_order(request):
+    if request.method == "POST":
+        #get token
+        access_token = AccessToken.objects.get(token = request.POST.get("access_token"),
+            expires__gt = timezone.now())
+        #get driver
+        driver = access_token.user.driver
+        #check if driver can only pick up one order at the same time
+        if Order.objects.filter(driver = driver).exclude(status = Order.ONTHEWAY):
+            return JsonResponse({"status": "failed", "error": "You can only pick one order at the same time"})
+        try:
+            order = Order.objects.get(
+                id = request.POST["order_id"],
+                driver = None,
+                status = Order.READY
+            )
+            order.driver = driver
+            order.status = Order.ONTHEWAY
+            order.picked_at = timezone.now()
+            order.save()
+            return JsonResponse({"status": "success"})
+        except Order.DoesNotExist:
+            return JsonResponse({"status": "failed", "error": "This order has been picked up by another driver"})
     return JsonResponse({})
 
 def driver_get_latest_order(request):
