@@ -8,3 +8,4 @@ psycopg2==2.6.2
 django-rest-framework-social-oauth2==1.0.4
 django-bootstrap3==7.0.1
 djangorestframework==3.4.3
+stripe==1.77.1

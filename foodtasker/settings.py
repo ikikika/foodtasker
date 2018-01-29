@@ -166,3 +166,5 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )
+
+STRIPE_API_KEY = 'sk_test_9tvzsRBDevz10LYnOEflZijw'
